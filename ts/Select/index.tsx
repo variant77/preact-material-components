@@ -29,6 +29,7 @@ export interface ISelectProps {
   hintText?: string;
   selectedIndex?: number;
   name?: string;
+  enableEmptyOption?: boolean;
 
   onChange?: (
     e: Event & {target: EventTarget & {selectedIndex: number}}
@@ -104,7 +105,13 @@ export class Select extends MaterialComponent<ISelectProps, ISelectState> {
     return (
       <div ref={this.setControlRef} {...props}>
         <select class="mdc-select__native-control" name={n}>
-          {props.hintText && <option value="" disabled selected />}
+          {props.hintText && (
+            <option
+              value=""
+              disabled={!props.enableEmptyOption}
+              selected={props.selectedIndex === 0}
+            />
+          )}
           {props.children}
         </select>
         {props.hintText && (
