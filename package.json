@@ -15,6 +15,7 @@
     "tslint": "tslint -p tsconfig.json",
     "tslint:fix": "tslint -p tsconfig.json --fix",
     "prepublishOnly": "npm run build && npm run test",
+    "prepare": "npm run build",
     "prettier:fix": "prettier --config ./prettier.config.js {,ts/**/*.tsx} --write",
     "test": "npm run tslint && npm run build"
   },
